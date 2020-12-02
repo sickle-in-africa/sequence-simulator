@@ -43,16 +43,18 @@ sub main {
 	print "Running simulate in $mode mode", "\n";
 
 	if( $mode eq "MutateReference" ){
-		MutateReference();
+		mutateReference();
 	} elsif ( $mode eq "GenerateReads" ){
-		GenerateReads();
+		generateReads();
+	} elsif ( $mode eq "help"){
+		printHelpMessage();
 	} else {
 		die "input ERROR: invalid simulate option"
 	}
 
 }
 
-sub MutateReference {
+sub mutateReference {
 
 	# initialize input parameters
 	my $inputs = Simulate::initialize_parameters();
@@ -67,7 +69,7 @@ sub MutateReference {
 	Simulate::print_reference_sequence($inputs, \$ref_string);
 }
 
-sub GenerateReads {
+sub generateReads {
 
 	# initialize input parameters
 	my $inputs = Simulate::initialize_parameters();
@@ -77,6 +79,19 @@ sub GenerateReads {
 
 	# generate the reads
 	Simulate::generate_reads($inputs, \$ref_string);
+}
+
+sub printHelpMessage {
+
+	print STDOUT
+"
+S E Q U E N C E - S I M U L A T O R
+
+***********************************
+***********************************
+
+this will be a welcome/help message soon.... 
+";
 }
 
 
